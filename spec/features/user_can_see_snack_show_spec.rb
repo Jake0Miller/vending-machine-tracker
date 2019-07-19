@@ -18,13 +18,17 @@ RSpec.describe 'When a user visits a snack show page', type: :feature do
 
     expect(page).to have_content("White Castle Burger")
     expect(page).to have_content("Price: $3.50")
-    # within "machine-#{dons.id}" do
+
+    within("#machine-#{dons.id}") do
       expect(page).to have_content("Location: Don's Mixed Drinks")
       expect(page).to have_content("Average Price: $2.50")
       expect(page).to have_content("Item Count: 3")
-    # end
-    expect(page).to have_content("Location: Ron's Mixed Drinks")
-    expect(page).to have_content("Average Price: $2.93")
-    expect(page).to have_content("Item Count: 3")
+    end
+
+    within("#machine-#{rons.id}") do
+      expect(page).to have_content("Location: Ron's Mixed Drinks")
+      expect(page).to have_content("Average Price: $2.93")
+      expect(page).to have_content("Item Count: 3")
+    end
   end
 end
